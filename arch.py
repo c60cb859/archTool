@@ -19,6 +19,8 @@ def get_configurator(program, target):
         configurator = linuxConfigs.AwesomeConfig(target)
     elif program == 'arch':
         configurator = linuxConfigs.ArchConfig(target)
+    elif program == 'ssh':
+        configurator = linuxConfigs.SecureSSHConfig(target)
 
     return configurator
 
