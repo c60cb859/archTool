@@ -52,6 +52,12 @@ class GitConfig:
             self.install_dependencies()
             self.setup_config()
 
+    def status(self):
+        if self.git_repo_exists():
+            return True
+        else:
+            return False
+
 
 class ArchConfig(GitConfig):
     def __init__(self, target):

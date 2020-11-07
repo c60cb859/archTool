@@ -26,20 +26,32 @@ def get_configurator(program, target):
 
 
 def install(program):
-    print('=' * 10 + ' Installing ' + program)
+    print('=' * 10 + ' Installing ' + program + ' ' + '=' * 10)
     target = LocalHost()
     installer = get_configurator(program, target)
     installer.install()
-    print('=' * 50)
+    print('=' * 30)
 
 
 def update():
     target = LocalHost()
     for program in CHOICES:
-        print('=' * 10 + ' Updating ' + program)
+        print('=' * 10 + ' Updating ' + program + ' ' + '=' * 10)
         configurator = get_configurator(program, target)
         configurator.update()
-        print('=' * 50)
+        print('=' * 30)
+
+
+def status():
+    target = LocalHost()
+    print('=' * 10 + ' Status ' + '=' * 10)
+    for program in CHOICES:
+        configurator = get_configurator(program, target)
+        if configurator.status():
+            print(program + ' is installed')
+        else:
+            print(program + ' is installed')
+        print('=' * 30)
 
 
 if __name__ == '__main__':
@@ -52,9 +64,15 @@ if __name__ == '__main__':
                         help='Update installed programs',
                         action='store_true')
 
+    parser.add_argument('-s', '--status',
+                        help='See status of installed programs',
+                        action='store_true')
+
     args = parser.parse_args()
 
     if args.install:
         install(args.install)
     elif args.update:
         update()
+    elif args.status:
+        status()
