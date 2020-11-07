@@ -28,6 +28,7 @@ class GitConfig:
         cmd = 'sudo pacman -S --needed --quiet --noconfirm '
         with open(self.location + 'dependencies', 'r') as deps:
             cmd += ''.join(deps.readlines()).replace('\n', ' ')
+        cmd += ' 2>/dev/null'
         print('Installing dependencies')
         self.target.run_cmd(cmd)
 
