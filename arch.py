@@ -50,7 +50,7 @@ def status():
         if configurator.status():
             print(program + ' is installed')
         else:
-            print(program + ' is installed')
+            print(program + ' not installed')
         print('=' * 30)
 
 
