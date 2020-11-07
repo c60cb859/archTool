@@ -18,18 +18,22 @@ class GitConfig:
 
     def get_git_repo(self):
         if self.git_repo_exists():
+            print('Pulling form git')
             self.target.run_cmd('cd ' + self.location + '; git pull')
         else:
+            print('Cloning git repo')
             self.target.run_cmd('git clone ' + self.git + ' ' + self.location)
 
     def install_dependencies(self):
         cmd = 'sudo pacman -S --needed '
         with open(self.location + 'dependencies', 'r') as deps:
             cmd += ''.join(deps.readlines()).replace('\n', ' ')
+        print('Installing dependencies')
         self.target.run_cmd(cmd)
 
     def setup_config(self):
         cmd = self.location + 'setupConfig.sh'
+        print('Setting up configurations')
         self.target.run_cmd(cmd)
 
     def install(self):

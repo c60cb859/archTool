@@ -24,16 +24,20 @@ def get_configurator(program, target):
 
 
 def install(program):
+    print('Installing ' + program)
     target = LocalHost()
     installer = get_configurator(program, target)
     installer.install()
+    print('=' * 20)
 
 
 def update():
     target = LocalHost()
     for program in CHOICES:
+        print('Updating ' + program)
         configurator = get_configurator(program, target)
         configurator.update()
+        print('=' * 50)
 
 
 if __name__ == '__main__':
