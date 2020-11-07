@@ -51,9 +51,6 @@ if __name__ == '__main__':
     parser.add_argument('-u', '--update',
                         help='Update installed programs',
                         action='store_true')
-    parser.add_argument('--ssh',
-                        help='Configure openSSH',
-                        choices=['install', 'update'])
 
     args = parser.parse_args()
 
