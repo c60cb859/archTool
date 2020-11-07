@@ -36,6 +36,11 @@ class GitConfig:
         print('Setting up configurations')
         self.target.run_cmd(cmd)
 
+    def update_config(self):
+        cmd = self.location + 'updateConfig.sh'
+        print('Updateing configurations')
+        self.target.run_cmd(cmd)
+
     def install(self):
         self.get_git_repo()
         self.install_dependencies()
@@ -86,3 +91,16 @@ class AwesomeConfig(GitConfig):
         self.git = 'https://github.com/c60cb859/awesomewm.git'
         self.home_path = os.path.expanduser('~')
         self.location = self.home_path + '/.config/awesomewm/'
+
+
+class SecureSSHConfig(GitConfig):
+    def __init__(self, target):
+        self.target = target
+        self.git = 'https://github.com/c60cb859/secureSSH.git'
+        self.home_path = os.path.expanduser('~')
+        self.location = self.home_path + '/.config/secureSSH/'
+
+    def update(self):
+        if self.git_repo_exists():
+            self.get_git_repo()
+            self.update_config()
