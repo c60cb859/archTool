@@ -24,17 +24,17 @@ def get_configurator(program, target):
 
 
 def install(program):
-    print('Installing ' + program)
+    print('=' * 10 + ' Installing ' + program)
     target = LocalHost()
     installer = get_configurator(program, target)
     installer.install()
-    print('=' * 20)
+    print('=' * 50)
 
 
 def update():
     target = LocalHost()
     for program in CHOICES:
-        print('Updating ' + program)
+        print('=' * 10 + ' Updating ' + program)
         configurator = get_configurator(program, target)
         configurator.update()
         print('=' * 50)

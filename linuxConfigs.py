@@ -25,7 +25,7 @@ class GitConfig:
             self.target.run_cmd('git clone ' + self.git + ' ' + self.location)
 
     def install_dependencies(self):
-        cmd = 'sudo pacman -S --needed '
+        cmd = 'sudo pacman -S --needed --quiet --noconfirm '
         with open(self.location + 'dependencies', 'r') as deps:
             cmd += ''.join(deps.readlines()).replace('\n', ' ')
         print('Installing dependencies')
