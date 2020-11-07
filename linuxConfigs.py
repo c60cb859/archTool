@@ -19,7 +19,7 @@ class GitConfig:
     def get_git_repo(self):
         if self.git_repo_exists():
             print('Pulling form git')
-            self.target.run_cmd('cd ' + self.location + '; git pull')
+            self.target.run_cmd('cd ' + self.location + '; git pull -q')
         else:
             print('Cloning git repo')
             self.target.run_cmd('git clone ' + self.git + ' ' + self.location)
