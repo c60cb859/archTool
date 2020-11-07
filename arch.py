@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-import linuxConfigs
+import gitConfigs
 from targets import LocalHost
 
 
@@ -10,17 +10,17 @@ CHOICES = ['arch', 'linuxConfigs', 'tmux', 'nvim', 'awesome', 'ssh']
 
 def get_configurator(program, target):
     if program == 'linuxConfigs':
-        configurator = linuxConfigs.LinuxConfig(target)
+        configurator = gitConfigs.LinuxConfig(target)
     elif program == 'tmux':
-        configurator = linuxConfigs.TmuxConfig(target)
+        configurator = gitConfigs.TmuxConfig(target)
     elif program == 'nvim':
-        configurator = linuxConfigs.NeoVimConfig(target)
+        configurator = gitConfigs.NeoVimConfig(target)
     elif program == 'awesome':
-        configurator = linuxConfigs.AwesomeConfig(target)
+        configurator = gitConfigs.AwesomeConfig(target)
     elif program == 'arch':
-        configurator = linuxConfigs.ArchConfig(target)
+        configurator = gitConfigs.ArchConfig(target)
     elif program == 'ssh':
-        configurator = linuxConfigs.SecureSSHConfig(target)
+        configurator = gitConfigs.SecureSSHConfig(target)
 
     return configurator
 
