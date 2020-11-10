@@ -33,6 +33,12 @@ def install(program):
     print('=' * 30)
 
 
+def install_all_noui():
+    noui = ['arch', 'linuxConfigs', 'tmux', 'nvim', 'ssh']
+    for program in noui:
+        install(program)
+
+
 def update():
     target = LocalHost()
     for program in CHOICES:
@@ -60,6 +66,11 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--install',
                         help='Install and configure program',
                         choices=CHOICES)
+
+    parser.add_argument('--install_all_noui',
+                        help='Install all server programs program',
+                        action='store_true')
+
     parser.add_argument('-u', '--update',
                         help='Update installed programs',
                         action='store_true')
@@ -72,6 +83,8 @@ if __name__ == '__main__':
 
     if args.install:
         install(args.install)
+    elif args.install_all_noui:
+        install_all_noui()
     elif args.update:
         update()
     elif args.status:
